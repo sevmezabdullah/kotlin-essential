@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/anasayfaFragment">
+
+    <fragment
+        android:id="@+id/anasayfaFragment"
+        android:name="com.abdullah.myapplication.AnasayfaFragment"
+        android:label="fragment_anasayfa"
+        tools:layout="@layout/fragment_anasayfa">
+        <action
+            android:id="@+id/oyun_ekranina_gecis"
+            app:destination="@id/oyunEkraniFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/oyunEkraniFragment"
+        android:name="com.abdullah.myapplication.OyunEkraniFragment"
+        android:label="fragment_oyun_ekrani"
+        tools:layout="@layout/fragment_oyun_ekrani">
+        <action
+            android:id="@+id/bitis_ekranina_gecis"
+            app:destination="@id/bitisEkraniFragment"
+            app:popUpTo="@id/oyunEkraniFragment"
+            app:popUpToInclusive="true">
+
+        </action>
+        <argument
+            android:name="isim"
+            android:defaultValue="Boş"
+            app:argType="string" />
+        <argument
+            android:name="yas"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="Person"
+            app:argType="com.abdullah.myapplication.person.Person" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/bitisEkraniFragment"
+        android:name="com.abdullah.myapplication.BitisEkraniFragment"
+        android:label="fragment_bitis_ekrani"
+        tools:layout="@layout/fragment_bitis_ekrani">
+        <action
+            android:id="@+id/anasayfaya_gecis"
+            app:destination="@id/anasayfaFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+</navigation>
